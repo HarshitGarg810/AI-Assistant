@@ -65,7 +65,7 @@ def evaluate_user_answer(text,question,user_answer,correct_answer):
     Tell if the user's answer is correct or not, and justify based on the document. Be specific (e.g.,"Based on paragraph 2..." or "Not mentioned clearly")."""
     response=model.generate_content(prompt)
     return response.text
-# ---- Streamlit UI ----
+# Streamlit UI
 st.set_page_config(page_title="📄 Smart Research Assistant", layout="centered")
 st.title("📄 Smart Research Assistant")
 
@@ -103,9 +103,9 @@ if st.button("Generate Challenge"):
         challenge_raw = generate_challenge_questions(doc_text)
         # Extract Qn-An pairs using regex
         qa_pairs = re.findall(r"(Q\d:.*?)\n(A\d:.*?)", challenge_raw, re.DOTALL)
-        st.session_state.qa_pairs = qa_pairs  # store in session
+        st.session_state.qa_pairs = qa_pairs
 
-# Show questions one by one with input boxes
+# Show questions 
 if "qa_pairs" in st.session_state:
     st.write("### Try answering these:")
 
